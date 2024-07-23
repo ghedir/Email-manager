@@ -17,7 +17,7 @@ const CategoryForm = ({ onSave, selectedCategory, resetForm }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitting form:', { Name, Prompt }); // Debug log
+    console.log('Submitting form:', { Name, Prompt });
     onSave({ Name, Prompt, createdAt: new Date().toISOString() });
     resetForm();
   };
@@ -26,14 +26,26 @@ const CategoryForm = ({ onSave, selectedCategory, resetForm }) => {
     <Box
       component="form"
       onSubmit={handleSubmit}
-      sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 3 }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2,
+        mb: 3,
+        p: 3,
+        border: '1px solid #ddd',
+        borderRadius: '8px',
+        backgroundColor: '#f9f9f9',
+      }}
     >
-      <Typography variant="h6">{selectedCategory ? 'Edit Category' : 'Add Category'}</Typography>
+      <Typography variant="h6" sx={{ mb: 2 }}>
+        {selectedCategory ? 'Modifier Categorie' : 'Ajouter Categorie'}
+      </Typography>
       <TextField
-        label="Category Name"
+        label="Nom"
         value={Name}
         onChange={(e) => setName(e.target.value)}
         required
+        sx={{ mb: 2 }}
       />
       <TextField
         label="Prompt"
@@ -42,9 +54,20 @@ const CategoryForm = ({ onSave, selectedCategory, resetForm }) => {
         multiline
         rows={4}
         required
+        sx={{ mb: 2 }}
       />
-      <Button variant="contained" type="submit">
-        {selectedCategory ? 'Update' : 'Add'}
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{
+          backgroundColor: '#3f51b5',
+          color: '#fff',
+          '&:hover': {
+            backgroundColor: '#303f9f',
+          },
+        }}
+      >
+        {selectedCategory ? 'Modifier' : 'Ajouter'}
       </Button>
     </Box>
   );
