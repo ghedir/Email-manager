@@ -13,12 +13,12 @@ const airtableApi = axios.create({
 
 export const getCategories = async () => {
   const response = await airtableApi.get('/');
-  //console.log('Fetched categories:', response.data.records); // Debug log
+  //console.log('Fetched categories:', response.data.records); 
   return response.data.records;
 };
 
 export const createCategory = async (category) => {
-    console.log('Creating category:', category); // Debug log
+    console.log('Creating category:', category); 
     const response = await airtableApi.post('/', {
       fields: {
         Name: category.Name,
@@ -26,12 +26,12 @@ export const createCategory = async (category) => {
         // createdAt: new Date().toISOString(),
       },
     });
-    console.log('Create response:', response.data); // Debug log
+    console.log('Create response:', response.data); 
     return response.data;
   };
 
   export const updateCategory = async (id, category) => {
-    console.log('Updating category:', id, category); // Debug log
+    console.log('Updating category:', id, category); 
     const response = await airtableApi.patch(`/${id}`, {
       fields: {
         Name: category.Name,
@@ -39,13 +39,13 @@ export const createCategory = async (category) => {
         // UpdatedAt: new Date().toISOString(),
       },
     });
-    console.log('Update response:', response.data); // Debug log
+    console.log('Update response:', response.data); 
     return response.data;
   };
 
 export const deleteCategory = async (id) => {
-  console.log('Deleting category:', id); // Debug log
+  console.log('Deleting category:', id); 
   const response = await airtableApi.delete(`/${id}`);
-  console.log('Delete response:', response.data); // Debug log
+  //console.log('Delete response:', response.data); 
   return response.data;
 };

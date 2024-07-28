@@ -64,7 +64,7 @@ const CategoryList = () => {
         console.log('Creating category:', category);
         await createCategory(category);
       }
-      resetForm(); // Reset form after save
+      resetForm(); 
       fetchCategories();
     } catch (error) {
       console.error('Failed to save category:', error);
@@ -149,7 +149,6 @@ const CategoryList = () => {
                   <ListItem key={record.id} style={listItemStyle}>
                     <ListItemText
                       primary={record.fields.Prompt}
-                      //secondary={`Created at: ${record.fields.createdAt}`}
                     />
                     <IconButton edge="end" aria-label="edit" onClick={() => handleEdit(record)} style={iconButtonStyle}>
                       <Edit />
